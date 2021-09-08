@@ -1,8 +1,9 @@
 package com.project.auctions.domain;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,10 +12,11 @@ import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.util.Date;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
+@Entity(name = "AUCTIONS")
 public class Auction {
 
     @Id
@@ -23,10 +25,11 @@ public class Auction {
     private BigDecimal price;
     private Date timeCreate;
 
-    @ManyToOne
+
+    @ManyToOne()
     private Offer offer;
 
-    @ManyToOne
+    @ManyToOne()
     private AppUser bidder;
 
 }

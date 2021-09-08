@@ -1,7 +1,6 @@
 package com.project.auctions.Contolers;
 
 import com.project.auctions.dto.OfferDto;
-import com.project.auctions.dto.OfferDtoToAddOffer;
 import com.project.auctions.mappers.OfferMapper;
 import com.project.auctions.service.OfferService;
 import lombok.RequiredArgsConstructor;
@@ -27,21 +26,10 @@ public class OfferController {
         return offerMapper.mapToOfferDtoList(offerService.GetOffers());
     }
 
-  // @GetMapping("/getAllOffersByProductId/{productId}")
-  // public List<OfferDto> getAllOffersByProductId(@PathVariable Long productId) {
-  //     return offerMapper.mapToOfferDtoList(offerService.getAllOffersByProductId(productId));
-  // }
-
-    //  @GetMapping("/getAllOffersBYUserId/{userId}")
-    //  public List<OfferDto> getAllOffersBYUserId(@PathVariable Long userId) {
-    //      return offerMapper.mapToOfferDtoList(offerService.getAllOffersBYUserId(userId));
-    //  }
 
     @PostMapping("/addOffer")
-    public void addOffer(@RequestBody OfferDtoToAddOffer offerDtoToAddOffer) {
-
-        offerService.addOffer(offerMapper.mapToOffer(
-                offerMapper.mapToOfferDtoFormOfferDtoToAddOffer(offerDtoToAddOffer)));
+    public void addOffer(@RequestBody OfferDto offerDto) {
+        offerService.addOffer(offerMapper.mapToOffer(offerDto));
     }
 
 
@@ -50,4 +38,9 @@ public class OfferController {
         offerService.deleteOffer(offerId);
     }
 
+
+    @GetMapping("/getOffersByUser{userId}")
+    public List<OfferDto> getOffersByUser(@PathVariable Long userId) {
+        return offerMapper.mapToOfferDtoList(offerService.getOffersByUser(userId));
+    }
 }

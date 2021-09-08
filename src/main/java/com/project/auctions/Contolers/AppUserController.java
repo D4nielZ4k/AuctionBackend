@@ -27,6 +27,7 @@ public class AppUserController {
     public AppUser getUser(@PathVariable Long userID){
        return appUserService.getUser(userID);
     }
+
     //Cos sie jebie
     @GetMapping(value = "/getUsers")
     public List<AppUser> getUsers(){

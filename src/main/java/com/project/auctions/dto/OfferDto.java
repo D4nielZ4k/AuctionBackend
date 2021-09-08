@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.UniqueConstraint;
 import java.math.BigDecimal;
-import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -14,10 +13,16 @@ import java.time.LocalDate;
 public class OfferDto {
 
     private Long id;
+
+    private String name;
+    private String author;
+    private int yearOfProduction;
+    private String description;
+    private String url;
     private BigDecimal offerPrice;
-    private LocalDate dataOfferCreated;
-    private LocalDate dataOfferDue;
+    private Date dataOfferCreated;
+    private Date dataOfferDue;
     private boolean isSold;
 
-    private ProductDto productDto;
+    private Long sellerId;
 }

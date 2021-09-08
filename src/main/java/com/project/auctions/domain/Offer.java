@@ -1,34 +1,34 @@
 package com.project.auctions.domain;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.NotFound;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.List;
+import java.util.Date;
 
-@lombok.Data
-@Entity
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "OFFERS")
 public class Offer {
 
     @Id
-    @NotFound
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
+    private String name;
+    private String author;
+    private int yearOfProduction;
+    private String description;
+    private String url;
     private BigDecimal offerPrice;
-    private LocalDate dataOfferCreated;
-    private LocalDate dataOfferDue;
+    private Date dataOfferCreated;
+    private Date dataOfferDue;
     private boolean isSold;
 
 
-    @OneToOne(
-            //   cascade = CascadeType.ALL
-    )
-    private Product product;
-
-
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "seller_id")
+    private AppUser seller;
 }

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -13,8 +14,8 @@ import java.time.LocalDate;
 public class OfferDtoToAddOffer {
     private Long id;
     private BigDecimal offerPrice;
-    private LocalDate dataOfferCreated;
-    private LocalDate dataOfferDue;
+    private Date dataOfferCreated;
+    private Date dataOfferDue;
     private boolean isSold;
 
     private Long productId;
