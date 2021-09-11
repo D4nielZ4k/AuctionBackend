@@ -25,7 +25,6 @@ public class AuctionDto {
     private Long id ;
     private BigDecimal price;
     private Date time;
-
     private Long offerId;
     private Long bidderId;
 

@@ -9,12 +9,12 @@ import java.util.List;
 
 public interface AuctionRepo extends CrudRepository<Auction, Long> {
 
-    @Query(value = "SELECT * FROM auctions.auction WHERE offer_id= :ARG ORDER BY price DESC LIMIT 1",nativeQuery = true)
+    @Query(value = "SELECT * FROM auction.auctions WHERE offer_id= :ARG ORDER BY price DESC LIMIT 1",nativeQuery = true)
     Auction findAuctionByHighPrice(@Param("ARG") String arg);
 
-    @Query(value ="SELECT * FROM auctions.auction WHERE offer_id= :ARG",nativeQuery = true)
+    @Query(value ="SELECT * FROM auction.auctions WHERE offer_id= :ARG",nativeQuery = true)
     List<Auction>findAllByOfferId(@Param("ARG") String arg);
 
-    @Query(value ="SELECT * FROM auctions.auction WHERE bidder_id= :ARG",nativeQuery = true)
+    @Query(value ="SELECT * FROM auction.auctions WHERE bidder_id= :ARG",nativeQuery = true)
     List<Auction>findAuctionByBidderId(@Param("ARG") Long arg);
 }

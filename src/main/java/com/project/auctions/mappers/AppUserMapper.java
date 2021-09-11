@@ -19,7 +19,7 @@ public class AppUserMapper {
     public AppUserDto mapToAppUserDto (final AppUser appUser){
         return new AppUserDto(
                 appUser.getId(),
-                appUser.getUserName(),
+                appUser.getUsername(),
                 appUser.getPassword(),
                 appUser.getRole()
         );

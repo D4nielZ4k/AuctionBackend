@@ -21,7 +21,7 @@ public class AuctionController {
     private final AuctionMapper auctionMapper;
 
     @PostMapping(value = "/addAuction")
-    public void addAuction(AuctionDto auctionDto) {
+    public void addAuction(@RequestBody AuctionDto auctionDto) {
         auctionService.addAuction(auctionMapper.mapToAuction(auctionDto));
 
     }

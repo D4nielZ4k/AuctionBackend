@@ -38,16 +38,18 @@ public class AuctionService {
          auctionFromSql = new Auction();
          auctionFromSql.setPrice(new BigDecimal(-1));
      }
-
+     auction.setTimeCreate(new Date(System.currentTimeMillis()));
      if (offerPrice < auction.getPrice().intValue()
              && auctionFromSql.getPrice().intValue() < auction.getPrice().intValue()
-             &&auction.getTimeCreate().before(offerRepo.findById(auction.getOffer().getId()).get().getDataOfferDue())
      ) {
          auction.setTimeCreate(new Date(System.currentTimeMillis()));
          auctionRepo.save(auction);
          LOGGER.info("The price has been raised");
          System.out.println(auctionFromSql);
-     } else {
+     } else if (auction.getTimeCreate().before(offerRepo.findById(auction.getOffer().getId()).get().getDataOfferDue())){
+         LOGGER.info("Auction closed");
+         System.out.println("Auction closed");
+     }else {
          LOGGER.info("The price must be higher");
          System.out.println("The price must be higher");
      }
