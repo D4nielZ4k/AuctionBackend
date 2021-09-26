@@ -36,4 +36,5 @@ public class OfferService {
     public List<Offer> getOffersByUser(Long userId) {
         return offerRepo.findOfferByUserId(userId);
     }
+
 }

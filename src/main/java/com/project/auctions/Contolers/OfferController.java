@@ -33,8 +33,8 @@ public class OfferController {
     }
 
 
-    @DeleteMapping("/DeleteMapping{offerId}")
-    public void deleteMapping(@PathVariable Long offerId) {
+    @DeleteMapping("/deleteOffer{offerId}")
+    public void deleteOffer(@PathVariable Long offerId) {
         offerService.deleteOffer(offerId);
     }
 

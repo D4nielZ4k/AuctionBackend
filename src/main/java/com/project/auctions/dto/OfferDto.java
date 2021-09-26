@@ -13,7 +13,6 @@ import java.util.Date;
 public class OfferDto {
 
     private Long id;
-
     private String name;
     private String author;
     private int yearOfProduction;
@@ -23,6 +22,5 @@ public class OfferDto {
     private Date dataOfferCreated;
     private Date dataOfferDue;
     private boolean isSold;
-
     private Long sellerId;
 }

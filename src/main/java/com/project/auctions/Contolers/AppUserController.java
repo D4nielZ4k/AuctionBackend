@@ -5,8 +5,13 @@ import com.project.auctions.dto.AppUserDto;
 import com.project.auctions.mappers.AppUserMapper;
 import com.project.auctions.repository.AppUserRepo;
 import com.project.auctions.service.AppUserService;
+import com.project.auctions.service.AuctionService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,12 +21,15 @@ import java.util.List;
 @RequiredArgsConstructor
 @CrossOrigin(origins = "*")
 public class AppUserController {
-
+    private static final Logger LOGGER = LoggerFactory.getLogger(AuctionService.class);
 
     @Autowired
     AppUserService appUserService;
     @Autowired
     AppUserMapper appUserMapper;
+
+
+
 
     @GetMapping(value = "/getUser{userID}")
     public AppUser getUser(@PathVariable Long userID){
@@ -38,19 +46,22 @@ public class AppUserController {
     public void addUser(@RequestBody AppUserDto appUserDto){
        appUserService.addUser(appUserMapper.mapToAppUser(appUserDto));
     }
+    @PostMapping("/addAdmin")
+    public void addAdmin(@RequestBody AppUserDto appUserDto){
+        appUserService.addAdmin(appUserMapper.mapToAppUser(appUserDto));
+    }
+
 
     @DeleteMapping("/deleteUser{userId}")
     public void deleteUser(@PathVariable Long userId){
         appUserService.deleteUser(userId);
     }
 
+
     @PutMapping("/changeRole{userId}{newRole}")
     public void changeRole(@PathVariable Long userId,@PathVariable String newRole){
         appUserService.getUser(userId).setRole(newRole);
     }
-
-
-
 
 
 
