@@ -21,6 +21,7 @@ public class AppUserMapper {
                 appUser.getId(),
                 appUser.getUsername(),
                 appUser.getPassword(),
+                appUser.getMail(),
                 appUser.getRole()
         );
     }
@@ -30,6 +31,7 @@ public class AppUserMapper {
                 appUserDto.getId(),
                 appUserDto.getUserName(),
                 appUserDto.getPassword(),
+                appUserDto.getMail(),
                 appUserDto.getRole()
         );
     }
