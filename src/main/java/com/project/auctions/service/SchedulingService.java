@@ -22,7 +22,7 @@ public class SchedulingService {
     MailService mailService;
 
 
-    @Scheduled(fixedDelay = 7)
+   @Scheduled(cron = "0 0 12 * * ?")
     public void sendMailsWithOffers() throws MessagingException {
 
         List<Offer> newOffers = offerService.getNewOffers();
@@ -36,7 +36,7 @@ public class SchedulingService {
         for (int i = 0; i < users.size(); i++) {
             AppUser appUser = users.get(i);
             mailService.sendMail(
-                    "HewnDevil@Gmail.com",
+                    appUser.getMail(),
                     appUser.getUsername() + " we have new offers for you",
                     text, false
 
