@@ -40,7 +40,7 @@ public class AuctionController {
 
     @GetMapping(value = "/getBiggestAuctionByOfferId{offerId}")
     public AuctionDto getBiggestAuctionByOfferId(@PathVariable Long offerId) {
-     return auctionMapper.mapToAuctionDto(auctionService.getBiggestAuctionByOfferId(offerId));
+        return auctionMapper.mapToAuctionDto(auctionService.getBiggestAuctionByOfferId(offerId));
     }
 
     @DeleteMapping(value = "/deleteAuction{auctionId}")

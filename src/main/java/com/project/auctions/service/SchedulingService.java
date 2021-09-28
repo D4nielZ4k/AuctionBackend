@@ -31,13 +31,13 @@ public class SchedulingService {
                 .collect(Collectors.toList());
 
 
-        String text = "najnowsze oferty ktore warto przejrzec to "+offers;
+        String text = "najnowsze oferty ktore warto przejrzec to " + offers;
         List<AppUser> users = appUserService.getUsers();
         for (int i = 0; i < users.size(); i++) {
             AppUser appUser = users.get(i);
             mailService.sendMail(
-                   "HewnDevil@Gmail.com",
-                    appUser.getUsername()+" we have new offers for you",
+                    "HewnDevil@Gmail.com",
+                    appUser.getUsername() + " we have new offers for you",
                     text, false
 
             );

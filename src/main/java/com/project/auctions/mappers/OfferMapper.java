@@ -34,17 +34,17 @@ public class OfferMapper {
     //zmien te nazwy zjebie wkoncu
     public Offer mapToOffer(final OfferDto offerDto) {
         return new Offer(
-                      offerDto.getId(),
-                      offerDto.getName(),
-                      offerDto.getAuthor(),
-                      offerDto.getYearOfProduction(),
-                      offerDto.getDescription(),
-                      offerDto.getUrl(),
-                      offerDto.getOfferPrice(),
-                      offerDto.getDataOfferCreated(),
-                      offerDto.getDataOfferDue(),
-                      offerDto.isSold(),
-                      appUserRepo.getById(offerDto.getSellerId())
+                offerDto.getId(),
+                offerDto.getName(),
+                offerDto.getAuthor(),
+                offerDto.getYearOfProduction(),
+                offerDto.getDescription(),
+                offerDto.getUrl(),
+                offerDto.getOfferPrice(),
+                offerDto.getDataOfferCreated(),
+                offerDto.getDataOfferDue(),
+                offerDto.isSold(),
+                appUserRepo.getById(offerDto.getSellerId())
         );
     }
 

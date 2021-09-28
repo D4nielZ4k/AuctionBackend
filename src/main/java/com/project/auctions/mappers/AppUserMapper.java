@@ -6,7 +6,6 @@ import com.project.auctions.repository.AppUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -16,7 +15,7 @@ public class AppUserMapper {
     @Autowired
     private AppUserRepo appUserRepo;
 
-    public AppUserDto mapToAppUserDto (final AppUser appUser){
+    public AppUserDto mapToAppUserDto(final AppUser appUser) {
         return new AppUserDto(
                 appUser.getId(),
                 appUser.getUsername(),
@@ -26,7 +25,7 @@ public class AppUserMapper {
         );
     }
 
-    public AppUser mapToAppUser (final AppUserDto appUserDto){
+    public AppUser mapToAppUser(final AppUserDto appUserDto) {
         return new AppUser(
                 appUserDto.getId(),
                 appUserDto.getUserName(),
@@ -36,8 +35,8 @@ public class AppUserMapper {
         );
     }
 
-    public List<AppUserDto> mapToAppUserDtoList(final List<AppUser> appUsers){
-        return  appUsers.stream()
+    public List<AppUserDto> mapToAppUserDtoList(final List<AppUser> appUsers) {
+        return appUsers.stream()
                 .map(this::mapToAppUserDto)
                 .collect(Collectors.toList());
     }

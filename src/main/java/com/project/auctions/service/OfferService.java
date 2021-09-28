@@ -3,13 +3,10 @@ package com.project.auctions.service;
 
 import com.project.auctions.domain.Offer;
 import com.project.auctions.repository.OfferRepo;
-import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -39,7 +36,7 @@ public class OfferService {
         return offerRepo.findOfferByUserId(userId);
     }
 
-    public List<Offer> getNewOffers(){
-     return offerRepo.findNewsOffers(new Date(System.currentTimeMillis()));
+    public List<Offer> getNewOffers() {
+        return offerRepo.findNewsOffers(new Date(System.currentTimeMillis()));
     }
 }

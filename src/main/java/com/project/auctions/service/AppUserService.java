@@ -17,7 +17,7 @@ public class AppUserService {
     private AppUserRepo appUserRepo;
 
     @Autowired
-    private  PasswordEncoder passwordEncoder;
+    private PasswordEncoder passwordEncoder;
 
 
     public void addUser(final AppUser appUser) {
@@ -39,7 +39,6 @@ public class AppUserService {
     public List<AppUser> getUsers() {
         return appUserRepo.findAll();
     }
-
 
 
     public void deleteUser(final Long id) {

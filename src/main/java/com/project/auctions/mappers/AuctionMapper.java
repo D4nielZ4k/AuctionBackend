@@ -19,27 +19,27 @@ public class AuctionMapper {
     @Autowired
     private OfferRepo offerRepo;
 
-    public AuctionDto mapToAuctionDto(final Auction auction){
+    public AuctionDto mapToAuctionDto(final Auction auction) {
         return new AuctionDto(
-               auction.getId(),
-               auction.getPrice(),
-               auction.getTimeCreate(),
-               auction.getBidder().getId(),
-               auction.getBidder().getId()
+                auction.getId(),
+                auction.getPrice(),
+                auction.getTimeCreate(),
+                auction.getBidder().getId(),
+                auction.getBidder().getId()
         );
     }
 
-    public Auction mapToAuction(final AuctionDto auctionDto){
+    public Auction mapToAuction(final AuctionDto auctionDto) {
         return new Auction(
-              auctionDto.getId(),
-              auctionDto.getPrice(),
-              auctionDto.getTime(),
-              offerRepo.findById(auctionDto.getOfferId()).orElseThrow(),
-              appUserRepo.findById(auctionDto.getBidderId()).orElseThrow()
-       );
+                auctionDto.getId(),
+                auctionDto.getPrice(),
+                auctionDto.getTime(),
+                offerRepo.findById(auctionDto.getOfferId()).orElseThrow(),
+                appUserRepo.findById(auctionDto.getBidderId()).orElseThrow()
+        );
     }
 
-    public List<AuctionDto> mapToAuctionDtoList (final List<Auction> auctionList){
+    public List<AuctionDto> mapToAuctionDtoList(final List<Auction> auctionList) {
         return auctionList.stream()
                 .map(this::mapToAuctionDto)
                 .collect(Collectors.toList());
